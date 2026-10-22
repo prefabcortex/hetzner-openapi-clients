@@ -1,0 +1,64 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Prefabcortex\Hetzner\Examples\Operations\LoadBalancerActions;
+
+use Prefabcortex\Hetzner\Client;
+use Prefabcortex\Hetzner\Exception\ApiException;
+use Prefabcortex\Hetzner\Exception\ChangeLoadBalancerProtectionClientErrorException;
+use Prefabcortex\Hetzner\Exception\ChangeLoadBalancerProtectionServerErrorException;
+use Prefabcortex\Hetzner\Exception\MalformedResponseException;
+use Prefabcortex\Hetzner\Exception\ResponseValidationException;
+use Prefabcortex\Hetzner\Exception\TransportException;
+use Prefabcortex\Hetzner\Exception\UnexpectedContentTypeException;
+use Prefabcortex\Hetzner\Exception\UnexpectedStatusCodeException;
+use Prefabcortex\Hetzner\Exception\UnsupportedValueException;
+use Prefabcortex\Hetzner\Model\ActionResponse;
+use Prefabcortex\Hetzner\Model\ChangeDeleteProtectionRequest;
+
+final class ChangeLoadBalancerProtectionExample
+{
+    /**
+     * Changes the protection configuration of a Load Balancer.
+     *
+     * Usage: pass an already-authenticated Client (see examples/Auth/).
+     *
+     *   $client = Client::withAPIToken($token, $config); // see examples/Auth/
+     *   ChangeLoadBalancerProtectionExample::changeLoadBalancerProtection($client, $id, ChangeLoadBalancerProtectionExample::buildExampleRequestBody());
+     *
+     * @throws ApiException
+     * @throws UnsupportedValueException
+     * @throws TransportException
+     * @throws ResponseValidationException
+     * @throws MalformedResponseException
+     * @throws ChangeLoadBalancerProtectionClientErrorException
+     * @throws ChangeLoadBalancerProtectionServerErrorException
+     * @throws UnexpectedContentTypeException
+     * @throws UnexpectedStatusCodeException
+     */
+    public static function changeLoadBalancerProtection(
+        Client $client,
+        int $id,
+        ChangeDeleteProtectionRequest $requestBody,
+    ): ActionResponse {
+        return $client->loadBalancerActions()->changeLoadBalancerProtection(
+            $id,
+            $requestBody,
+        );
+    }
+
+    /**
+     * NOTE: This is a structurally valid skeleton generated from the OpenAPI schema (required
+     * properties, plus optional properties that carry a spec `example:`). oneOf/anyOf alternatives
+     * always pick the first option. It does NOT encode business rules the spec only documents in
+     * prose (e.g. "either X or Y must be set"). Review the values and the API documentation before
+     * production use.
+     */
+    public static function buildExampleRequestBody(): ChangeDeleteProtectionRequest
+    {
+        return ChangeDeleteProtectionRequest::builder()
+            ->setDelete(true)
+            ->build();
+    }
+}

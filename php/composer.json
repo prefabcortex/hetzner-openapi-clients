@@ -1,0 +1,59 @@
+{
+    "name": "prefabcortex/hetzner",
+    "description": "Unofficial PHP client for Hetzner API \u2014 PHP",
+    "type": "library",
+    "keywords": [
+        "openapi",
+        "api-client",
+        "rest",
+        "sdk",
+        "hetzner"
+    ],
+    "license": "0BSD",
+    "authors": [
+        {
+            "name": "Dominic Bla\u00df"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "ext-json": "*",
+        "nyholm/psr7": "^1.8.2",
+        "psr/http-client": "^1.0",
+        "psr/http-client-implementation": "^1.0",
+        "psr/http-factory": "^1.1",
+        "psr/http-message": "^1.0 || ^2.0",
+        "symfony/validator": "^7.4 || ^8.0"
+    },
+    "conflict": {
+        "symfony/translation-contracts": "<3.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Prefabcortex\\Hetzner\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Prefabcortex\\Hetzner\\Examples\\": "examples/",
+            "Prefabcortex\\Hetzner\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "ergebnis/phpstan-rules": "^2.14",
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.3",
+        "phpunit/phpunit": "^13.4",
+        "psr/log": "^3.0",
+        "rector/rector": "^2.7",
+        "shipmonk/phpstan-rules": "^4.4",
+        "symfony/http-client": "^7.4 || ^8.0"
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse --memory-limit=-1",
+        "rector-check": "rector process --dry-run --clear-cache --memory-limit=-1",
+        "cs-check": "@php -d memory_limit=-1 vendor/bin/php-cs-fixer check",
+        "cs-fix": "@php -d memory_limit=-1 vendor/bin/php-cs-fixer fix"
+    }
+}
